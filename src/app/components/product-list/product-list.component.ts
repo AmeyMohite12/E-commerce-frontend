@@ -30,6 +30,8 @@ export class ProductListComponent implements OnInit {
       ? +this.route.snapshot.paramMap.get('id')
       : 1;
 
+    console.log(' Message is := ' + this.currentCategoryId);
+
     this.productService
       .getProductList(this.currentCategoryId)
       .subscribe((data) => {
