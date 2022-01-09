@@ -2,14 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ProductListComponent } from './components/components/product-list.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product.service';
 
 import { Routes, RouterModule } from '@angular/router';
+import { ProductCategoryComponent } from './components/product-category/product-category.component';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
+  {
+    path: 'search/:keyword',
+    component: ProductListComponent,
+  },
   {
     path: 'category/:id',
     component: ProductListComponent,
@@ -35,7 +41,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ProductListComponent],
+  declarations: [AppComponent, ProductListComponent, ProductCategoryComponent, SearchComponent],
   imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(routes)],
   providers: [ProductService],
   bootstrap: [AppComponent],
