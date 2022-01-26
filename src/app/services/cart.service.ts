@@ -68,4 +68,23 @@ export class CartService {
     );
     console.log('---------------------');
   }
+
+  decrementQuantity(cartItem: CartItem) {
+    cartItem.quanity--;
+    if (cartItem.quanity === 0) {
+      this.remove(cartItem);
+    } else this.computeCartTotals();
+  }
+
+  remove(cartItem: CartItem) {
+    const index = this.cartItems.findIndex(
+      (tempCartItem) => tempCartItem.id === cartItem.id
+    );
+
+    if (index > -1) {
+      this.cartItems.splice(index, 1);
+      this.computeCartTotals();
+    }
+    // if index found remove from that index
+  }
 }
